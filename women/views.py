@@ -1,11 +1,15 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseNotFound
 from django.template.loader import render_to_string
 
 def index(request):
-    t = render_to_string('index.html')
-    return HttpResponse(t)
+    #t = render_to_string('women/index.html')
+    #return HttpResponse(t)   эти две строки - сокращенный вариант строки ниже
+    return render(request, 'women/index.html')
+
+def about(request):
+    return render(request, 'women/about.html')
 
 def categories(request, cat_id):
     return HttpResponse(f"<h1>Статьи по категориям</h1><p>id: {cat_id}</p>")

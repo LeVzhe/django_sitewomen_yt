@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Главная страница</title>
+    <title>{{ title }}</title>
 </head>
 <bode>
-    <h1>Главная страница Women</h1>
+    {% for el in menu %}
+    <ul>
+        <li>{{ el }}</li>
+    </ul>
+    {% endfor %}
+    
+    <h1>{{ title }}</h1>
+    <p>{{ menu }}</p>
+    <p>{{ float }}</p>
+    <p>{{ lst }}</p>
+    <p>{{ set }}</p>
+    <p>{{ obj }}</p>
+    <p>{{ dict }}</p>
+    <p><a href='/about/'>О сайте</a></p>
 </body>
 </html>

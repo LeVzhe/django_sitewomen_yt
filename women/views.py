@@ -1,15 +1,33 @@
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseNotFound
-from django.template.loader import render_to_string
+
+menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+
+class MyClass:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
 
 def index(request):
+    data = {
+        'title': 'Главная страница', 
+        'menu': menu,
+        'float': 28.56,
+        'lst': [1, 2, 'abc', True],
+        'set': {1, 2, 2, 3, 5},
+        'dict': {'key_1': 'value_1', 'key_2': 'value_2'},
+        'obj': MyClass(10, 20),
+        }
     #t = render_to_string('women/index.html')
     #return HttpResponse(t)   эти две строки - сокращенный вариант строки ниже
-    return render(request, 'women/index.html')
+    return render(request, 'women/index.html', context=data)
 
 def about(request):
-    return render(request, 'women/about.html')
+    data = {
+        'title': 'О сайте' 
+        }
+    return render(request, 'women/about.html', data)
 
 def categories(request, cat_id):
     return HttpResponse(f"<h1>Статьи по категориям</h1><p>id: {cat_id}</p>")

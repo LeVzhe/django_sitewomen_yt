@@ -4,19 +4,22 @@
     <title>{{ title }}</title>
 </head>
 <bode>
-    {% for el in menu %}
-    <ul>
-        <li>{{ el }}</li>
-    </ul>
-    {% endfor %}
     
+    <p>{{ menu|join:" | " }}</p>
     <h1>{{ title }}</h1>
-    <p>{{ menu }}</p>
-    <p>{{ float }}</p>
-    <p>{{ lst }}</p>
-    <p>{{ set }}</p>
-    <p>{{ obj }}</p>
-    <p>{{ dict }}</p>
+    <ul>
+        {% for p in posts %}
+        {% if p.is_published %}
+        <li>
+            <h2>{{ p.title }}</h2>
+            <p>{{ p.content }}</p>
+            {% if  not forloop.last %}
+            <hr>
+            {% endif %}
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
     <p><a href='/about/'>О сайте</a></p>
 </body>
 </html>

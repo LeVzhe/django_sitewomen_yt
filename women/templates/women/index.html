@@ -4,8 +4,13 @@
     <title>{{ title }}</title>
 </head>
 <bode>
-    
-    <p>{{ menu|join:" | " }}</p>
+    <ul>
+        {% for m in menu %}
+        <li>
+            <a href="{% url m.url_name %}">{{ m.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
     <h1>{{ title }}</h1>
     <ul>
         {% for p in posts %}
@@ -13,6 +18,7 @@
         <li>
             <h2>{{ p.title }}</h2>
             <p>{{ p.content }}</p>
+            <p><a href="{% url 'post' p.id %}">Читать пост</a></p>
             {% if  not forloop.last %}
             <hr>
             {% endif %}
@@ -20,6 +26,6 @@
         {% endif %}
         {% endfor %}
     </ul>
-    <p><a href='/about/'>О сайте</a></p>
+    <p><a href='{% url 'about' %}'>О сайте</a></p>
 </body>
 </html>

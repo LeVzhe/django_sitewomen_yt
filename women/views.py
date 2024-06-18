@@ -27,7 +27,8 @@ def index(request):
 
 def about(request):
     data = {
-        'title': 'О сайте' 
+        'title': 'О сайте',
+        'menu': menu 
         }
     return render(request, 'women/about.html', data)
 

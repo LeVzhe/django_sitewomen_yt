@@ -55,6 +55,9 @@ def login(request):
 def show_post(request, post_id):
     return HttpResponse(f"Отображение статьи с ID = {post_id}")
 
+def show_category(request, cat_id):
+    return HttpResponse(f"Отображение категории с ID = {cat_id}")
+
 
     
 
